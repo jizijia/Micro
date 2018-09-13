@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micro.ConsolePanel", "Micro.ConsolePanel\Micro.ConsolePanel.csproj", "{B7F6D458-ED01-4A87-B5E6-25C85B3F0DE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Miscro.Caching", "Miscro.Caching\Miscro.Caching.csproj", "{E1FEA85F-0BB4-4BEB-9AA4-F0423C59A815}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micro.Caching", "Miscro.Caching\Micro.Caching.csproj", "{E1FEA85F-0BB4-4BEB-9AA4-F0423C59A815}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micro.Core", "Micro.Core\Micro.Core.csproj", "{3F767FC0-FAE5-489B-A5B9-BB832E98F6AD}"
 EndProject
