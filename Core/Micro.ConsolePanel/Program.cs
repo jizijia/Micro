@@ -10,9 +10,11 @@ namespace Micro.ConsolePanel
         {
             var _roleService = new RoleService();
             var _userService = new UserService();
+            var _permissionService = new PermissionService();
+
 
             var transaction = new Transaction();
-            var role = transaction.Do<Role>(new RoleTransationUnit()
+            var role = transaction.Do<Role>(new TransationUnit()
             {
                 Continue = () =>
                 {
@@ -26,14 +28,28 @@ namespace Micro.ConsolePanel
                    return _roleService.DeleteRoleAsync((Role)x).Result;
                }
             });
-            var user = transaction.Do<User>(new RoleTransationUnit()
+            var permission = transaction.Do<Permission>(new TransationUnit()
+            {
+                Continue = () =>
+                {
+                    return _permissionService.AddPermissionAsync(new Permission()
+                    {
+                        Name = "Gavin"
+                    }).Result;
+                },
+                Rollback = x =>
+                {
+                    return _permissionService.DeletePermissionAsync((Permission)x).Result;
+                }
+            });
+            var user = transaction.Do<User>(new TransationUnit()
             {
                 Continue = () =>
                {
                    return _userService.AddUserAsync(new User()
                    {
                        Name = "Gavin"
-                   });
+                   }).Result;
                },
                 Rollback = x =>
                {
@@ -49,7 +65,7 @@ namespace Micro.ConsolePanel
     {
         private Stack<TransactionHistory> transactionHistories = new Stack<TransactionHistory>();
 
-        public T Do<T>(RoleTransationUnit transactionUnit)
+        public T Do<T>(TransationUnit transactionUnit)
         {
             try
             {
@@ -66,9 +82,12 @@ namespace Micro.ConsolePanel
             {
                 Console.WriteLine("Occus an error, try to rollback.");
                 TransactionHistory transactionHistory = null;
-                if (transactionHistories.TryPop(out transactionHistory))
-                {
-                    transactionHistory.TransationUnit.Rollback.Invoke(transactionHistory.Paremter);
+                while (transactionHistories.Count>0)
+                { 
+                    if (transactionHistories.TryPop(out transactionHistory))
+                    {
+                        transactionHistory.TransationUnit.Rollback.Invoke(transactionHistory.Paremter);
+                    }
                 }
                 Console.WriteLine(ex.Message);
                 return default(T);
@@ -77,12 +96,12 @@ namespace Micro.ConsolePanel
     }
     public class TransactionHistory
     {
-        public RoleTransationUnit TransationUnit { get; set; }
+        public TransationUnit TransationUnit { get; set; }
         public object Paremter { get; set; }
         public int Index { get; set; }
     }
 
-    public class RoleTransationUnit
+    public class TransationUnit
     {
         public virtual Func<object> Continue { get; set; }
 
@@ -101,6 +120,21 @@ namespace Micro.ConsolePanel
         public Task<bool> DeleteRoleAsync(Role role)
         {
             Console.WriteLine($"Delete role succeed[{role.Id}:{role.Name}]");
+            return Task.FromResult(true);
+        }
+    }
+    public class PermissionService
+    {
+        public Task<Permission> AddPermissionAsync(Permission permission)
+        {
+            permission.Id = Guid.NewGuid();
+            Console.WriteLine($"Save Permission succeed[{permission.Id}:{permission.Name}]");
+            return Task.FromResult(permission);
+        }
+
+        public Task<bool> DeletePermissionAsync(Permission permission)
+        {
+            Console.WriteLine($"Delete Permission succeed[{permission.Id}:{permission.Name}]");
             return Task.FromResult(true);
         }
     }
