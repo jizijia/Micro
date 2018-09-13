@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Micro.Core.Extensions
+namespace Micro.Extensions
 {
     /// <summary>
     /// Extension methods for <see cref="DayOfWeekExtensions"/>.

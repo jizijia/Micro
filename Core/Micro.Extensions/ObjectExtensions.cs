@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.ComponentModel;
 
-namespace Micro.Core.Extensions
+namespace Micro.Extensions
 {
     /// <summary>
     /// Extension methods for all objects.

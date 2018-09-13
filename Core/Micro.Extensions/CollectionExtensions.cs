@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Micro.Core.Extensions
+namespace Micro.Extensions
 {
     public static class CollectionExtensions
     {

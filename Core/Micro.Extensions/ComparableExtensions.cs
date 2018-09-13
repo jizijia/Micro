@@ -1,6 +1,6 @@
 using System;
 
-namespace Micro.Core.Extensions
+namespace Micro.Extensions
 {
     /// <summary>
     /// Extension methods for <see cref="IComparable{T}"/>.

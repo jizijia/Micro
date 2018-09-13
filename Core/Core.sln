@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micro.Caching", "Miscro.Cac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micro.Core", "Micro.Core\Micro.Core.csproj", "{3F767FC0-FAE5-489B-A5B9-BB832E98F6AD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micro.Extensions", "Micro.Extensions\Micro.Extensions.csproj", "{D0672C6A-F728-4B5E-91A3-3A8D56E5E163}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{3F767FC0-FAE5-489B-A5B9-BB832E98F6AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F767FC0-FAE5-489B-A5B9-BB832E98F6AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F767FC0-FAE5-489B-A5B9-BB832E98F6AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0672C6A-F728-4B5E-91A3-3A8D56E5E163}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0672C6A-F728-4B5E-91A3-3A8D56E5E163}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0672C6A-F728-4B5E-91A3-3A8D56E5E163}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0672C6A-F728-4B5E-91A3-3A8D56E5E163}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

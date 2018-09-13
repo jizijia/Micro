@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq; 
 
-namespace Micro.Core.Extensions
+namespace Micro.Extensions
 {
     /// <summary>
     /// Extension methods for <see cref="DateTime"/>.

@@ -1,5 +1,5 @@
 ﻿using JetBrains.Annotations;
-using Micro.Core.Extensions;
+using Micro.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,21 +8,20 @@ using System.Text;
 namespace Micro.Core
 {
     [DebuggerStepThrough]
-    public static class Check
+    public static class Guard
     {
         [ContractAnnotation("value:null => halt")]
-        public static T NotNull<T>(T value, [InvokerParameterName] [NotNull] string parameterName)
+        public static T ArgumentIsNotNull<T>(T value, [InvokerParameterName] [NotNull] string parameterName)
         {
             if (value == null)
             {
                 throw new ArgumentNullException(parameterName);
             }
-
             return value;
         }
 
         [ContractAnnotation("value:null => halt")]
-        public static string NotNullOrEmpty(string value, [InvokerParameterName] [NotNull] string parameterName)
+        public static string ArgumentNotNullOrEmpty(string value, [InvokerParameterName] [NotNull] string parameterName)
         {
             if (string.IsNullOrEmpty(value))
             {
@@ -33,7 +32,7 @@ namespace Micro.Core
         }
 
         [ContractAnnotation("value:null => halt")]
-        public static string NotNullOrWhiteSpace(string value, [InvokerParameterName] [NotNull] string parameterName)
+        public static string ArgumentNotNullOrWhiteSpace(string value, [InvokerParameterName] [NotNull] string parameterName)
         {
             if (value.IsNullOrWhiteSpace())
             {
@@ -44,7 +43,7 @@ namespace Micro.Core
         }
 
         [ContractAnnotation("value:null => halt")]
-        public static ICollection<T> NotNullOrEmpty<T>(ICollection<T> value, [InvokerParameterName] [NotNull] string parameterName)
+        public static ICollection<T> ArgumentNotNullOrEmpty<T>(ICollection<T> value, [InvokerParameterName] [NotNull] string parameterName)
         {
             if (value.IsNullOrEmpty())
             {

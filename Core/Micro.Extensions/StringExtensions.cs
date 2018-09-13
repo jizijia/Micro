@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions; 
 
-namespace Micro.Core.Extensions
+namespace Micro.Extensions
 {
     /// <summary>
     /// Extension methods for String class.
