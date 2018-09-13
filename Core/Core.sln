@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micro.Core", "Micro.Core\Mi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micro.Extensions", "Micro.Extensions\Micro.Extensions.csproj", "{D0672C6A-F728-4B5E-91A3-3A8D56E5E163}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micro.Transaction", "Micro.Transaction\Micro.Transaction.csproj", "{34DE50E4-1DC7-494F-A9A0-1218B6681EBE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{D0672C6A-F728-4B5E-91A3-3A8D56E5E163}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0672C6A-F728-4B5E-91A3-3A8D56E5E163}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0672C6A-F728-4B5E-91A3-3A8D56E5E163}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34DE50E4-1DC7-494F-A9A0-1218B6681EBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34DE50E4-1DC7-494F-A9A0-1218B6681EBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34DE50E4-1DC7-494F-A9A0-1218B6681EBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34DE50E4-1DC7-494F-A9A0-1218B6681EBE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

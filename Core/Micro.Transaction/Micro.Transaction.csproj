@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ITransaction.cs" />
+    <Compile Remove="ITransactionUnit.cs" />
+    <Compile Remove="ITransatcionBuilder.cs" />
+    <Compile Remove="Transaction.cs" />
+    <Compile Remove="TransactionBuilder.cs" />
+  </ItemGroup>
+
+</Project>
