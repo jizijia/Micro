@@ -1,10 +1,15 @@
 ﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using Micro.ApiFramework;
+using Micro.ApiFramework.Extensions;
+using Micro.ApiFramework.Middlewares;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using NLog.Extensions.Logging;
 using System;
 
 namespace Micro.Web
@@ -15,9 +20,9 @@ namespace Micro.Web
         private readonly object loggerFactory;
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration; 
+            Configuration = configuration;
             loggerFactory = NLog.LogManager.LoadConfiguration("nlog.config").GetCurrentClassLogger();
-        } 
+        }
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
@@ -34,14 +39,7 @@ namespace Micro.Web
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
-                .AddControllersAsServices()
-                // Json 配置
-                .AddJsonOptions(x =>
-                {
-                    x.SerializerSettings.DateFormatString = "yyyy/MM/dd HH:mm:ss";
-                    x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-                    x.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
-                }); ;
+                .AddControllersAsServices().AddJsonOptions(Defaults.JsonOptionAction); ;
 
             // Swagger
             services.AddSwaggerGen(options =>
@@ -54,20 +52,21 @@ namespace Micro.Web
                 });
             });
 
-            var container = new ContainerBuilder();
-            container.Populate(services);
-            return new AutofacServiceProvider(container.Build());
+            // 采用Autofac替代自带Ioc
+            return services.TransToAutofac();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+            loggerFactory.AddNLog();
+            app.UseLoggingMiddleware();
+            app.UseErrorHandleMiddleware();
 
             app.UseMvc();
-
 
             // Swagger
             var pathBase = Configuration["PATH_BASE"];

@@ -9,10 +9,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Infrastructure\Domain\" />
     <Folder Include="Infrastructure\Dto\" />
     <Folder Include="Infrastructure\EntityConfigurations\" />
     <Folder Include="wwwroot\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>
