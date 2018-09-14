@@ -10,6 +10,8 @@ namespace Micro.Core
     [DebuggerStepThrough]
     public static class Guard
     {
+
+        #region Argument
         [ContractAnnotation("value:null => halt")]
         public static T ArgumentIsNotNull<T>(T value, [InvokerParameterName] [NotNull] string parameterName)
         {
@@ -52,5 +54,8 @@ namespace Micro.Core
 
             return value;
         }
+        #endregion
+
+
     }
 }
