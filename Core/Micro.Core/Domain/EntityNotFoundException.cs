@@ -6,7 +6,7 @@ using System.Text;
 namespace Micro.Core.Domain
 {
     [Serializable]
-    public class EntityNotFoundException: Exception
+    public class EntityNotFoundException: CustomException
     {
         /// <summary>
         /// Type of the entity.
