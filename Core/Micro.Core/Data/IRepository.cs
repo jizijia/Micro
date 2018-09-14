@@ -13,15 +13,8 @@ namespace Micro.Core.Data
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public interface IRepository<T>
-        where T : IEntity
+        where T : class, IEntity
     {
-
-        /// <summary>
-        /// 设置是否通过PlatformId进行过滤
-        /// </summary>
-        /// <param name="isPlatformFilter"></param>
-        void SetPlatformFilter(bool isPlatformFilter = true);
-
         /// <summary>
         /// 设置是否通过IsDeleted进行过滤
         /// </summary>
@@ -37,7 +30,7 @@ namespace Micro.Core.Data
         /// <param name="where"></param>
         /// <returns></returns>
         Task LoadChildrenAsync<TProperty>(T t, Expression<Func<T, IEnumerable<TProperty>>> keySelector, Expression<Func<TProperty, bool>> where = null)
-            where TProperty : IEntity;
+            where TProperty :class, IEntity;
 
         #region Properties
         /// <summary>
