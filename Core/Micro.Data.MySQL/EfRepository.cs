@@ -333,9 +333,10 @@ namespace Data.MySQL
         /// <returns></returns>
         public virtual Task<T> GetAsync(int id)
         {
-            if (id <= 0)
-                return null;
-            return Table.FirstOrDefaultAsync(x => x.Id == id);
+            var entity = Table.FirstOrDefaultAsync(x => x.Id == id);
+            if (entity == null)
+                throw new EntityNotFoundException(typeof(T), id);
+            return entity;
         }
         /// <summary>
         /// 通过条件表达式获取单个实例
@@ -346,7 +347,10 @@ namespace Data.MySQL
         /// <returns></returns>
         public virtual Task<T> GetAsync(Expression<Func<T, bool>> where)
         {
-            return Table.FirstOrDefaultAsync(where);
+            var entity = Table.FirstOrDefaultAsync(where);
+            if (entity == null)
+                throw new EntityNotFoundException(typeof(T), where.ToString());
+            return entity;
         }
 
         /// <summary>

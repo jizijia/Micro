@@ -9,10 +9,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Infrastructure\Dto\" />
     <Folder Include="Infrastructure\EntityConfigurations\" />
     <Folder Include="wwwroot\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +26,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Micro.ApiFramework\Micro.ApiFramework.csproj" />
+    <ProjectReference Include="..\Micro.Core\Micro.Core.csproj" />
+    <ProjectReference Include="..\Micro.Data.MySQL\Micro.Data.MySQL.csproj" />
+    <ProjectReference Include="..\Miscro.Caching\Micro.Caching.csproj" />
   </ItemGroup>
 
 </Project>

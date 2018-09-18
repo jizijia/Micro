@@ -40,5 +40,15 @@ namespace Micro.ApiFramework
             get => _httpContextAccessor.HttpContext?.Request?.Path;
         }
         public dynamic User { get; set; }
+
+        public string CreateToken(dynamic user)
+        {
+            return JsonHelper.ToJson(user);
+        }
+        //internal class CacheUser
+        //{
+        //    string UserInfo { get; set; }
+        //    string IP { get; set; }
+        //}
     }
 }
